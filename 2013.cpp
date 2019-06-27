@@ -5,7 +5,18 @@
 //Output
 //对于每组输入数据，输出第一天开始吃的时候桃子的总数，每个测试实例占一行。
 #include<stdio.h>
+int tao[30],m=1;
 int main()
 {
+    int n;
+    tao[1]=1;
+    while(scanf("%d",&n)==1)
+    {
+        for(int i=m+1;i<=n;i++)
+        {
+            tao[i]=(tao[i-1]+1)*2;
+        }
+        printf("%d\n",tao[n]);
+    }
     return 0;
 }
