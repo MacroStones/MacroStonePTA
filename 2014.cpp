@@ -7,5 +7,24 @@
 #include<stdio.h>
 int main()
 {
+    int n,tmp,max,min,sum;
+    while(scanf("%d",&n)==1)
+    {
+        max=0;min=100;sum=0;
+        for(int i=1;i<=n;i++)
+        {
+            scanf("%d",&tmp);
+            if(max<tmp)
+            {
+                max=tmp;
+            }
+            if(min>tmp)
+            {
+                min=tmp;
+            }
+            sum+=tmp;
+        }
+        printf("%.2f\n",((float)(sum-max-min))/(n-2));
+    }
     return 0;
 }
