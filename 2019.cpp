@@ -5,3 +5,21 @@ Input
 Output
 对于每个测试实例，输出插入新的元素后的数列。
 */
+#include<stdio.h>
+int main(){
+    int n,m;
+    int tmp;
+    while(scanf("%d%d",&n,&m)==2 && n!=0){
+        for(int i=0;i<n;i++){
+            scanf("%d",&tmp);
+            if(i!=0)
+                printf(" ");
+            if(tmp>m){
+                printf("%d ",m);
+                m=0x7fffffff;
+            }
+            printf("%d",tmp);
+        }
+        printf("\n");
+    }
+}
