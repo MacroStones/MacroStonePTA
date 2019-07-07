@@ -9,27 +9,45 @@ Output
 #include<stdio.h>
 #include<string.h>
 int main(){
-    int n,m,tmp,big;
-    double xszf[50],kmzf[5];
+    int n,m,pass;
+    int a[50][5],p[50];
+    double x[5],y[50];
     while(scanf("%d%d",&n,&m)==2){
-        big=0;
-        memset(kmzf,0,sizeof(kmzf));
-        memset(xszf,0,sizeof(xszf));
-        for(int i=0;i<n;++i){
-            for(int j=0;j<m;++j){
-                scanf("%d",tmp);
-                kmzf[j]+=tmp;
-                xszf[i]+=tmp; 
-           }
+        memset(x,0,sizeof(x));
+        memset(y,0,sizeof(y));
+        memset(p,0,sizeof(p));
+        pass=0;
+        for(int i=0;i<n;i++){//i<=n
+            for(int j=0;j<m;j++){//j<=m
+                scanf("%d",&a[i][j]);
+                y[i]+=a[i][j];
+                x[j]+=a[i][j];
+            }
+            if(i<n-1){
+                printf("%.2f ",y[i]/m);
+            }else{
+                printf("%.2f\n",y[i]/m);
+            }
+        }
+        for(int i=0;i<m;i++){//i<m
+            x[i]/=n;
+            if(i<m-1){
+                printf("%.2f ",x[i]);
+            }else{
+                printf("%.2f\n",x[i]);
+            }
         }
         for(int i=0;i<n;i++){
-            printf("%d ",xszf[i]/m);
+            for(int j=0;j<m;j++){
+                if(a[i][j]>=x[j]){
+                    p[i]++;
+                }
+            }
+            if(p[i]==m){
+                pass++;
+            }
         }
-        printf("\n");
-        for(int i=0;i<m;i++){
-            printf("%d ",kmzf[i]/n);
-        }
-        printf("\n%d\n",dig);
+        printf("%d\n\n",pass);
     }
     return 0;
 }
