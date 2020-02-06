@@ -6,3 +6,20 @@ Output
 对于每个测试实例，请输出平面的最大分割数，每个实例的输出占一行。
 http://acm.hdu.edu.cn/showproblem.php?pid=2050
 */
+#include<iostream>
+using namespace std;
+long long a[10001]={1,2,7};
+int main()
+{
+    int n;
+    cin>>n;
+    for(int i=3;i<10001;i++)
+        a[i]=a[i-1]+4*(i-1)+1;
+    while(n--)
+    {
+        int b;
+        cin>>b;
+        cout<<a[b]<<endl;
+    }
+    return 0;
+}

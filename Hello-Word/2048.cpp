@@ -19,3 +19,39 @@ Sample Output
 50.00% 
 http://acm.hdu.edu.cn/showproblem.php?pid=2048
 */
+# include <iostream>
+# include <stdio.h>
+# include <vector>
+# include <string.h>
+# include <algorithm>
+# include <math.h>
+
+using namespace std;
+long long num_case[30];
+long long num_gross_case[30];
+
+long long getnum(int n){
+	if (num_case[n]){
+		return num_case[n];
+	}
+	else{
+		return (num_case[n] = (n-1)*getnum(n-1) + (n-1)*getnum(n-2));
+	}
+}
+int main(){
+	int C; cin >> C;
+	num_gross_case[1] = 1;
+	for (int i = 2; i <= 21; i++){
+		num_gross_case[i] = num_gross_case[i-1] * i;
+	}
+	num_case[0] = 0;
+	num_case[1] = 0;
+	num_case[2] = 1;
+	
+	while (C--){
+		int nn;
+		cin >> nn;
+		printf("%.2lf%%\n", 100.0 * getnum(nn) / num_gross_case[nn]);
+	}
+	return 0;
+}
