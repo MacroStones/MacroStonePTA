@@ -16,5 +16,27 @@
 
 #include<stdio.h>
 int main(){
+	int a,b,n,ad=0,bd=0;
+	scanf("%d%d",&a,&b);
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		int a1,a2,b1,b2;
+		scanf("%d%d%d%d",&a1,&a2,&b1,&b2);
+		if(a1+b1==a2 && a2!=b2){
+			ad++;
+			//printf("%d %d\n",ad,bd);
+			if(ad>a){
+				printf("A\n%d",bd);
+				return 0;
+			}
+		}else if(a1+b1==b2 && a2!=b2){
+			bd++;
+			//printf("%d %d\n",ad,bd);
+			if(bd>b){
+				printf("B\n%d",ad);
+				return 0;
+			}
+		}
+	}
 	return 0;
 }
