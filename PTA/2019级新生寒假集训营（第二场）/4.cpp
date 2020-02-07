@@ -12,7 +12,48 @@
 注意：同一个人可以被查询多次，但只输出一次。
 */
 
-#include<stdio.h>
-int main(){
-	return 0;
-}
+ #include<stdio.h>
+ #include<string.h>
+ int a[100000]={0};
+ int main()
+ {
+     int n;
+     scanf("%d",&n);
+     for(int i=0;i<n;i++)
+     {
+         int k=0;
+         scanf("%d",&k);
+         for(int i=0;i<k;i++)
+         {
+             int t=0;
+             scanf("%d",&t);
+             if(k!=1)//当只有朋友圈只有一个人时 说明该人没朋友
+             {
+                 a[t]=1;//数据当数组下标置 1 
+             }
+         }
+     }
+     int m=0;
+     scanf("%d",&m);
+     int f=0;
+     while(m--)
+     {
+         int key=0;
+         scanf("%d",&key);
+         if(a[key]==0)
+         {
+             if(f==0)
+             {
+                 f++;
+             }
+             else printf(" ");
+             printf("%05d",key);
+             a[key]=1;
+         }
+     }
+     if(f==0)
+     {
+         printf("No one is handsome\n");
+     }
+     return 0;
+  } 
