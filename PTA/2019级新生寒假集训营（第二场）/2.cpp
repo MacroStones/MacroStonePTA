@@ -15,5 +15,19 @@ Only hh:mm.  Too early to Dang.
 
 #include<stdio.h>
 int main(){
+	int h,m;
+	scanf("%d:%d",&h,&m);
+	if(h<12){
+		printf("Only %d:%d.  Too early to Dang.",h,m);
+	}else if(h==12 && m==00){
+		printf("Only 12:00.  Too early to Dang.");
+	}else{
+		if(m!=0){
+			h++;
+		}
+		for(int i=0;i<h-12;i++){
+			printf("Dang");
+		}
+	}
 	return 0;
 }
