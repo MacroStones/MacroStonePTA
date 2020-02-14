@@ -10,35 +10,25 @@
 
 
 #include<stdio.h>
-struct node
-{
-	int sex;
-	char name[10];
-	int flag;
-}data[51];
+int gender[50];
+char student[50][9];
+int n;
 int main()
 {
-	int n;
-	int count=0;
 	scanf("%d",&n);
-	for(int i=0;i<n;i++)
-	{
-		scanf("%d %s",&data[i].sex,&data[i].name);
-		data[i].flag=0;
+	for(int i=0;i<n;i++){
+		scanf("%d %s",gender+i,student[i]);
 	}
-	for(int i=0;i<n/2;i++)
-	{
-		for(int j=n-1;j>=n/2;j--)
-		{
-			if((data[i].sex!=data[j].sex)&&data[i].flag==0&&data[j].flag==0)
-			{
-				data[i].flag =1;
-				data[j].flag =1;
-				count=count+2;
-				printf("%s %s\n",data[i].name ,data[j].name );
-			}
+	for(int i=0;i<n/2;i++){
+		printf("%s",student[i]);
+		int j=n-1;
+		if(gender[i]==0){
+			while(gender[j]!=1)j--;
+		}else{
+			while(gender[j]!=0)j--;
 		}
-		if(count==n)
-		break;
+		printf(" %s\n",student[j]);
+		gender[j]=-1;
 	}
+	return 0;
 }
